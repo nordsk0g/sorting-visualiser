@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.array-container {
+  height: 95vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.array-bar {
+  margin: 0 0.15rem;
+  width: 0.35rem;
+  background-color: #00ffb8;
+}
