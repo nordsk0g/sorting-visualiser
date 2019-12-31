@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import SortingVisualiser from "./components/SortingVisualiser";
+import SortingVisualiser from "./components/SortingVisualiser/SortingVisualiser";
 
 function App() {
   return (
