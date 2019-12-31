@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Menu from "./Menu";
 import "../style/SortingVisualiser.css";
 
 const randomIntFromInterval = (min, max) => {
@@ -15,20 +16,23 @@ const SortingVisualiser = () => {
   const resetArray = () => {
     const array = [];
     for (let i = 0; i < 100; i++) {
-      array.push(randomIntFromInterval(1, 1000));
+      array.push(randomIntFromInterval(1, 500));
     }
     setToSort(array);
   };
 
   return (
-    <div className="array-container">
-      {toSort.map((value, index) => (
-        <div
-          key={index}
-          className="array-bar"
-          style={{ height: `${value}px` }}
-        ></div>
-      ))}
+    <div>
+      <Menu resetArray={resetArray} />
+      <div className="array-container">
+        {toSort.map((value, index) => (
+          <div
+            key={index}
+            className="array-bar"
+            style={{ height: `${value}px` }}
+          ></div>
+        ))}
+      </div>
     </div>
   );
 };

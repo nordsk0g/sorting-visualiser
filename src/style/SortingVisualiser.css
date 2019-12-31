@@ -1,11 +1,37 @@
+.root {
+  --primary-color: #00ffff;
+  --secondary-color: #00ffb8;
+  --tertiary-color: #001eff;
+  --quarternary-color: #7c00ff;
+  --quinary-color: #0092ff;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.menu {
+  /* height: 20vh; */
+  background-color: #4f5b66;
+}
+
+.main-btn {
+  padding: 0.7rem;
+  border: none;
+  background-color: #4f5b66;
+  color: #00ffb8;
+}
+
+.main-btn:hover {
+  cursor: pointer;
+  background-color: #65737e;
 }
 
 .array-container {
-  height: 95vh;
+  height: 90vh;
   display: flex;
   flex-direction: row;
   align-items: center;
