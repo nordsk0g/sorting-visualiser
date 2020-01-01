@@ -1,5 +1,7 @@
 import swap from "./swap";
 
+// BUBBLE SORT
+
 export function getBubbleSortAnimations(array) {
   const animations = [];
   if (array.length <= 1) return array;
@@ -7,7 +9,7 @@ export function getBubbleSortAnimations(array) {
   return animations;
 }
 
-export const bubbleSort = (array, animations) => {
+function bubbleSort(array, animations) {
   let unsorted_until_index = array.length - 1;
   let sorted = false;
 
@@ -24,7 +26,32 @@ export const bubbleSort = (array, animations) => {
     }
     unsorted_until_index--;
   }
-};
+}
+
+// INSERTION SORT
+
+export function getInsertionSortAnimations(array) {
+  const animations = [];
+  if (array.length <= 1) return array;
+  insertionSort(array, animations);
+  return animations;
+}
+
+function insertionSort(array, animations) {
+  for (let i = 1; i < array.length; i++) {
+    let position = i;
+    let temp = array[i];
+    animations.push([true, position, position - 1]);
+    animations.push([false, position, position - 1]);
+
+    while (position > 0 && array[position - 1] > temp) {
+      array[position] = array[position - 1];
+      position = position - 1;
+      animations.push([position, temp, position + 1, array[position + 1]]);
+    }
+    array[position] = temp;
+  }
+}
 
 // MERGE SORT
 
@@ -38,30 +65,49 @@ export function getMergeSortAnimations(array) {
 
 function mergeSortHelper(
   mainArray,
-  startIdx,
-  endIdx,
+  startIndex,
+  endIndex,
   auxiliaryArray,
   animations
 ) {
-  if (startIdx === endIdx) return;
-  const middleIdx = Math.floor((startIdx + endIdx) / 2);
-  mergeSortHelper(auxiliaryArray, startIdx, middleIdx, mainArray, animations);
-  mergeSortHelper(auxiliaryArray, middleIdx + 1, endIdx, mainArray, animations);
-  doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations);
+  if (startIndex === endIndex) return;
+  const middleIndex = Math.floor((startIndex + endIndex) / 2);
+  mergeSortHelper(
+    auxiliaryArray,
+    startIndex,
+    middleIndex,
+    mainArray,
+    animations
+  );
+  mergeSortHelper(
+    auxiliaryArray,
+    middleIndex + 1,
+    endIndex,
+    mainArray,
+    animations
+  );
+  doMerge(
+    mainArray,
+    startIndex,
+    middleIndex,
+    endIndex,
+    auxiliaryArray,
+    animations
+  );
 }
 
 function doMerge(
   mainArray,
-  startIdx,
-  middleIdx,
-  endIdx,
+  startIndex,
+  middleIndex,
+  endIndex,
   auxiliaryArray,
   animations
 ) {
-  let k = startIdx;
-  let i = startIdx;
-  let j = middleIdx + 1;
-  while (i <= middleIdx && j <= endIdx) {
+  let k = startIndex;
+  let i = startIndex;
+  let j = middleIndex + 1;
+  while (i <= middleIndex && j <= endIndex) {
     animations.push([i, j]);
     animations.push([i, j]);
     if (auxiliaryArray[i] <= auxiliaryArray[j]) {
@@ -72,13 +118,13 @@ function doMerge(
       mainArray[k++] = auxiliaryArray[j++];
     }
   }
-  while (i <= middleIdx) {
+  while (i <= middleIndex) {
     animations.push([i, i]);
     animations.push([i, i]);
     animations.push([k, auxiliaryArray[i]]);
     mainArray[k++] = auxiliaryArray[i++];
   }
-  while (j <= endIdx) {
+  while (j <= endIndex) {
     animations.push([j, j]);
     animations.push([j, j]);
     animations.push([k, auxiliaryArray[j]]);

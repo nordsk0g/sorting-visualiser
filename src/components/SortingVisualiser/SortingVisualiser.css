@@ -11,10 +11,11 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  background-color: #a7adba;
 }
 
 .array-container {
-  height: 90vh;
+  height: 95vh;
   display: flex;
   flex-direction: row;
   align-items: center;
