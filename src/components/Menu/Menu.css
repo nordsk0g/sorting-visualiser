@@ -27,7 +27,4 @@
     display: flex;
     flex-direction: column;
   }
-  .main-btn {
-    width: 100%;
-  }
 }
