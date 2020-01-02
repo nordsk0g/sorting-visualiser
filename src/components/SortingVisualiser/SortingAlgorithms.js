@@ -131,3 +131,37 @@ function doMerge(
     mainArray[k++] = auxiliaryArray[j++];
   }
 }
+
+// QUICK SORT
+export function getQuickSortAnimations(array) {
+  const animations = [];
+  if (array.length <= 1) return array;
+  quickSort(array, 0, array.length - 1, animations);
+  return animations;
+}
+
+function partition(array, low, high, animations) {
+  let i = low - 1;
+  let pivot = array[high];
+
+  for (let j = low; j < high; j++) {
+    animations.push([true, j, high]);
+    animations.push([false, j, high]);
+    if (array[j] <= pivot) {
+      i++;
+      animations.push([i, array[j], j, array[i]]);
+      swap(array, i, j);
+    }
+  }
+  animations.push([i + 1, array[high], high, array[i + 1]]);
+  swap(array, i + 1, high);
+  return i + 1;
+}
+
+function quickSort(array, low, high, animations) {
+  if (low < high) {
+    let partitionIndex = partition(array, low, high, animations);
+    quickSort(array, low, partitionIndex - 1, animations);
+    quickSort(array, partitionIndex + 1, high, animations);
+  }
+}

@@ -3,7 +3,8 @@ import Menu from "../Menu/Menu";
 import {
   getBubbleSortAnimations,
   getMergeSortAnimations,
-  getInsertionSortAnimations
+  getInsertionSortAnimations,
+  getQuickSortAnimations
 } from "./SortingAlgorithms";
 import "./SortingVisualiser.css";
 
@@ -11,7 +12,7 @@ const PRIMARY_COLOR = "#00ffb8";
 
 const SECONDARY_COLOR = "#7c00ff";
 
-const TIMER = 500;
+const TIMER = 1;
 
 const randomIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -26,7 +27,7 @@ const SortingVisualiser = () => {
 
   const resetArray = () => {
     const newArray = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 150; i++) {
       newArray.push(randomIntFromInterval(1, 500));
     }
     setArray(newArray);
@@ -120,7 +121,37 @@ const SortingVisualiser = () => {
     }
   };
 
-  const quickSort = () => {};
+  const quickSort = () => {
+    const animations = getQuickSortAnimations(array);
+    console.log(animations);
+    for (let i = 0; i < animations.length; i++) {
+      const arrayBars = document.getElementsByClassName("array-bar");
+      const isColorChange = animations[i].length === 3;
+      if (isColorChange) {
+        const [colorSwitch, barOneIndex, barTwoIndex] = animations[i];
+        const barOneStyle = arrayBars[barOneIndex].style;
+        const barTwoStyle = arrayBars[barTwoIndex].style;
+        const color = colorSwitch ? SECONDARY_COLOR : PRIMARY_COLOR;
+        setTimeout(() => {
+          barOneStyle.backgroundColor = color;
+          barTwoStyle.backgroundColor = color;
+        }, i * TIMER);
+      } else {
+        setTimeout(() => {
+          const [
+            barOneIndex,
+            newOneHeight,
+            barTwoIndex,
+            newTwoHeight
+          ] = animations[i];
+          const barOneStyle = arrayBars[barOneIndex].style;
+          const barTwoStyle = arrayBars[barTwoIndex].style;
+          barOneStyle.height = `${newOneHeight}px`;
+          barTwoStyle.height = `${newTwoHeight}px`;
+        }, i * TIMER);
+      }
+    }
+  };
 
   return (
     <div>

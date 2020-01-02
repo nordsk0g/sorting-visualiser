@@ -23,7 +23,7 @@
 }
 
 .array-bar {
-  margin: 0 0.15rem;
-  width: 0.35rem;
+  margin: 0 1px;
+  width: 1rem;
   background-color: #00ffb8;
 }
