@@ -47,7 +47,9 @@ function insertionSort(array, animations) {
     while (position > 0 && array[position - 1] > temp) {
       array[position] = array[position - 1];
       position = position - 1;
+      animations.push([true, position, position + 1]);
       animations.push([position, temp, position + 1, array[position + 1]]);
+      animations.push([false, position, position + 1]);
     }
     array[position] = temp;
   }

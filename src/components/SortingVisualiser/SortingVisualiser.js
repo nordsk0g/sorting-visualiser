@@ -10,9 +10,9 @@ import "./SortingVisualiser.css";
 
 const PRIMARY_COLOR = "#00ffb8";
 
-const SECONDARY_COLOR = "#7c00ff";
+const SECONDARY_COLOR = "#001eff";
 
-const TIMER = 1;
+const TIMER = 5;
 
 const randomIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -47,7 +47,7 @@ const SortingVisualiser = () => {
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-        }, i * TIMER);
+        }, i * 1);
       } else {
         setTimeout(() => {
           const [
@@ -60,7 +60,7 @@ const SortingVisualiser = () => {
           barOneStyle.height = `${newOneHeight}px`;
           const barTwoStyle = arrayBars[barTwoIndex].style;
           barTwoStyle.height = `${newTwoHeight}px`;
-        }, i * TIMER);
+        }, i * 1);
       }
     }
   };
