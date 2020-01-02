@@ -18,3 +18,13 @@
   cursor: pointer;
   background-color: #65737e;
 }
+
+@media (max-width: 750px) {
+  .menu {
+    flex-direction: column;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}

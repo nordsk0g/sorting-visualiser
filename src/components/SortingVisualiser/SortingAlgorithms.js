@@ -16,8 +16,8 @@ function bubbleSort(array, animations) {
   while (!sorted) {
     sorted = true;
     for (let i = 0; i < unsorted_until_index; i++) {
-      animations.push([i, i + 1, true]);
-      animations.push([i, i + 1, false]);
+      animations.push([true, i, i + 1]);
+      animations.push([false, i, i + 1]);
       if (array[i] > array[i + 1]) {
         sorted = false;
         swap(array, i, i + 1);

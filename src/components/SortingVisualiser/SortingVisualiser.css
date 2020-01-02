@@ -27,3 +27,16 @@
   width: 1rem;
   background-color: #00ffb8;
 }
+
+@media (max-width: 330px) {
+  .array-bar {
+    margin: 0 0.5px;
+    width: 1rem;
+  }
+}
+
+@media (max-height: 600px) {
+  .array-container {
+    height: 100%;
+  }
+}
